@@ -6,6 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "next",
+    "dev:inspect": "npm --node-options=--inspect=0.0.0.0:3001 run dev",
     "build": "next build",
     "start": "next start"
   },
