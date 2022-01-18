@@ -1,8 +1,8 @@
 ## Iniciar proyecto
 ```bash
-// inicializar proyecto
+# inicializar proyecto
 npm init -y
-// instalar con npm
+# instalar con npm
 npm install next react react-dom
 ```
 Se crea el folder de pages y los scripts
