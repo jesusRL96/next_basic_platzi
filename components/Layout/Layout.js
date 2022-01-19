@@ -1,16 +1,16 @@
 import React from 'react';
 import Navbar from '@components/Navbar/Navbar'
 import styles from './layout.module.css'
-
+import { Container } from '@chakra-ui/react'
 
 const Layout = ({children }) => {
   return (
-    <div className='container'>                     {/* Module Global */}
-        <div className="container-navbar">          {/* Module Global */}
+    <Container maxW='container.xl'>
+        <div>
             <Navbar />
         </div>
         {children}
-        <div className={styles.containerFooter}>    {/* Module Global */}
+        <div>
             -Footer
         </div>
         <style jsx>{`
@@ -18,7 +18,7 @@ const Layout = ({children }) => {
                 background-color: red;
             }
         `}</style>
-    </div>
+    </Container>
   );
 };
 

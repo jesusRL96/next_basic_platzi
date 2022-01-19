@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react'
-
+import { Grid, GridItem } from '@chakra-ui/react'
+import { Heading } from '@chakra-ui/react'
+import ProductBox from '@components/ProductBox/ProductBox'
 
 const Home = () => {
     const [productList, setProductList] = React.useState([]);
@@ -12,12 +14,14 @@ const Home = () => {
 
     return (
         <div>
-            <h1>hola mundo</h1>
-            {productList.map((product) => {
-                return (
-                    <div key={product.id}>{product.name}</div>
-                )
-            })}
+            <Heading>Home Page</Heading>
+            <Grid templateColumns='repeat(5, 1fr)' gap={6}>
+                {productList.map((product) => {
+                    return (
+                        <ProductBox key={product.id} {...product} />
+                    )
+                })}
+            </Grid>
         </div>
     )
 }
