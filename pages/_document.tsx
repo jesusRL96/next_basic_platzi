@@ -9,11 +9,11 @@ class MyDocument extends Document {
   render() {
     return (
       <Html>
-        <Head />
+        <Head>
         {/* favicon */}
         {/* webfont */}
         {/* stilesheet */}
-        <Head />
+        </Head>
         <body className="body-class">
           <Main />
           <NextScript />

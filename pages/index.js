@@ -1,6 +1,4 @@
 import React, { useEffect } from 'react'
-import Navbar from '../components/Navbar/Navbar'
-
 
 
 const Home = () => {
@@ -14,7 +12,6 @@ const Home = () => {
 
     return (
         <div>
-            <Navbar/>
             <h1>hola mundo</h1>
             {productList.map((product) => {
                 return (
