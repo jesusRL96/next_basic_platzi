@@ -11,3 +11,14 @@ Se crea el folder de pages y los scripts
     "build": "next build",
     "start": "next start"
 ```
+Para hacer deploy como pagina estatica se agrega el script
+```js
+    "export": "next export"
+```
+Corremos en bash:
+```bash
+npm run build
+npm run export
+# iniciar servidor estatico
+npx serve ./out/
+```
