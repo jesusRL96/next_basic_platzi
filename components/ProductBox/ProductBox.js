@@ -1,5 +1,6 @@
-import { Box, Badge, Image } from "@chakra-ui/react";
+import { Box, Badge } from "@chakra-ui/react";
 import Link from "next/link";
+import Image from "next/image";
 
 // Sample card from Airbnb
 
@@ -9,7 +10,7 @@ function ProductBox(product) {
   return (
     <Link href={`/product/${id}`}>
       <Box maxW="sm" borderWidth="1px" borderRadius="lg" overflow="hidden">
-        <Image src={image} alt={name} />
+        <Image src={image} alt={name} width={333} height={333}/>
 
         <Box p="6">
           <Box display="flex" alignItems="baseline">
