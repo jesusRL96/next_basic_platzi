@@ -3,14 +3,25 @@ import { Grid, GridItem } from '@chakra-ui/react'
 import { Heading } from '@chakra-ui/react'
 import ProductBox from '@components/ProductBox/ProductBox'
 
-const Home = () => {
-    const [productList, setProductList] = React.useState([]);
 
-    useEffect(()=>{
-        fetch('api/avo').then(response => response.json()).then(({ data, length }) => {
-            setProductList(data);
-        });
-    },[])
+export const getServerSideProps = async () => {
+    const response = await fetch('http://localhost:3000/api/avo');
+    const { data } = await response.json();
+
+    return {
+        props: {
+            productList: data
+        },
+    }
+};
+
+const Home = ({productList}) => {
+
+    // useEffect(()=>{ // client side
+    //     fetch('api/avo').then(response => response.json()).then(({ data, length }) => {
+    //         setProductList(data);
+    //     });
+    // },[])
 
     return (
         <div>
