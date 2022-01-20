@@ -4,8 +4,8 @@ import { Heading } from '@chakra-ui/react'
 import ProductBox from '@components/ProductBox/ProductBox'
 
 
-export const getServerSideProps = async () => {
-    const response = await fetch('http://localhost:3000/api/avo');
+export const getStaticProps = async () => {
+    const response = await fetch('https://platzi-avo.vercel.app/api/avo');
     const { data } = await response.json();
 
     return {
