@@ -17,20 +17,48 @@ import {
 } from "@chakra-ui/react";
 import { Spinner } from "@chakra-ui/react";
 
-export default function ProductItem() {
-  const {
-    query: { productId },
-  } = useRouter();
-  const [product, setProduct] = useState(null);
-  useEffect(() => {
-    if (productId) {
-      fetch(`http://localhost:3000/api/avo/${productId}`)
-        .then((response) => response.json())
-        .then((data) => {
-          setProduct(data);
-        });
+// Pagina dinamica
+
+export const getStaticPaths = async () => {
+    const response = await fetch('https://platzi-avo.vercel.app/api/avo');
+    const { data } = await response.json();
+    const paths = data.map((item) => {
+        return {params:{productId:item.id}}
+    });
+    return {
+        paths,
+        // incremental static generation
+        // 404 for everything else
+        fallback:false
     }
-  }, [productId]);
+}
+
+export const getStaticProps = async ({params}) => {
+    const response = await fetch(`https://platzi-avo.vercel.app/api/avo/${params.productId}`);
+    const data = await response.json();
+
+    return {
+        props: {
+            product: data
+        },
+    }
+};
+
+
+export default function ProductItem({product}) {
+//   const {
+//     query: { productId },
+//   } = useRouter();
+//   const [product, setProduct] = useState(null);
+//   useEffect(() => { // Client side
+//     if (productId) {
+//       fetch(`http://localhost:3000/api/avo/${productId}`)
+//         .then((response) => response.json())
+//         .then((data) => {
+//           setProduct(data);
+//         });
+//     }
+//   }, [productId]);
 
   if (product) {
     return (
@@ -43,7 +71,7 @@ export default function ProductItem() {
           <Flex>
             <Image
               rounded={"md"}
-              alt={productId.name}
+              alt={product.name}
               src={product.image}
               fit={"cover"}
               align={"center"}

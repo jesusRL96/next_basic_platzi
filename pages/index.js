@@ -3,6 +3,7 @@ import { Grid, GridItem } from '@chakra-ui/react'
 import { Heading } from '@chakra-ui/react'
 import ProductBox from '@components/ProductBox/ProductBox'
 
+// Pagina estatica
 
 export const getStaticProps = async () => {
     const response = await fetch('https://platzi-avo.vercel.app/api/avo');
